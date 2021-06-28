@@ -1,0 +1,24 @@
+{
+  "name": "challenge-solution",
+  "version": "1.0.0",
+  "description": "API REST que busca usuários pelo nome e username a partir de uma palavra chave",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node src/main/index.js",
+    "lint:fix": "eslint --fix *.js ."
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "mongodb": "^3.6.9"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.14.6",
+    "@babel/eslint-parser": "^7.14.7",
+    "eslint": "^7.29.0"
+  }
+}
