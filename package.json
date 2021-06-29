@@ -4,7 +4,8 @@
   "description": "API REST que busca usuários pelo nome e username a partir de uma palavra chave",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest --passWithNoTests --silent --noStackTrace --runInBand --no-cache",
+    "test:coverage": "npm test -- --coverage",
     "start": "node src/main/index.js",
     "lint:fix": "eslint --fix *.js ."
   },
@@ -19,6 +20,7 @@
   "devDependencies": {
     "@babel/core": "^7.14.6",
     "@babel/eslint-parser": "^7.14.7",
-    "eslint": "^7.29.0"
+    "eslint": "^7.29.0",
+    "jest": "^27.0.6"
   }
 }
