@@ -1,11 +1,29 @@
-version: "3.8"
-
+version: '3.8'
 services:
-  mongodb:
-    image: mongo
+  app:
+    build: .
+    command: npm start
     ports:
-      - "27017:27017"
-    container_name: mongodb_challenger
-    volumes: 
-      - /home/challenger/database:/data/db
-    restart: unless-stopped
+      - '8080:8080'
+    restart: always
+    volumes:
+      - '.:/usr/app'
+    links:
+      - database
+    networks:
+      - app-compose-network
+    env_file: 
+      - environments
+
+  database:
+    image: mongo
+    container_name: database_challenger
+    restart: always
+    ports:
+      - '27017:27017'
+    networks:
+      - app-compose-network
+
+networks:
+  app-compose-network:
+    driver: bridge
