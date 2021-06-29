@@ -26,10 +26,4 @@ module.exports = {
       
     return users
   },
-  getUserById: async(id) => {
-    const collection = await databaseHelper.getCollection(COLLECTION_NAME_USERS);
-    const users = await collection.findOne({ id })
-
-    return users
-  },
 };
