@@ -12,46 +12,39 @@ const prepareData = (fileName) => {
   return rows;
 }
 
-const userMapper = (users, separator) => users
-  .map(user => user.split(separator))
-  .map(user => ({
-    id: user[0],
-    name: user[1],
-    userName: user[2],
-  }));
-
-const relevanceMapper = (relevances) => relevances
-  .map(relevance => ({
-    id: relevance,
-  }))
-
 const loadData = async(config) => {
   const userCollection = await getCollection('users');
-  const highRelevanceCollection = await getCollection('highRelevance');
-  const lessRelevanceCollection = await getCollection('lessRelevance');
-
-
   const userCount = await userCollection.countDocuments();
-  const highRelevanceCount = await highRelevanceCollection.countDocuments();
-  const lessRelevanceCount = await lessRelevanceCollection.countDocuments();
-
 
   if(!userCount) {
-    const dataPrepared = prepareData(config.users.fileName);
-    const mappedUsers = userMapper(dataPrepared, config.users.separator);
-    await userCollection.insertMany(mappedUsers, { autoIndexId: false });
-  }
-  if(!highRelevanceCount) {
-    const dataPrepared = prepareData(config.relevance.high.fileName)
-    const mappedHighRelevance = relevanceMapper(dataPrepared);
-    await highRelevanceCollection.insertMany(mappedHighRelevance);
-  }
-  if(!lessRelevanceCount) {
-    const dataPrepared = prepareData(config.relevance.less.fileName)
-    const mappedLessRelevance = relevanceMapper(dataPrepared);
-    await lessRelevanceCollection.insertMany(mappedLessRelevance);
-  }
+    const userData = prepareData(config.users.fileName);
+    const userHighRelevanceData = prepareData(config.relevance.high.fileName)
+    const userLessRelevanceData = prepareData(config.relevance.less.fileName)
 
+    const users =  userData
+      .map(user => user.split(config.users.separator))
+      .map(user => ({
+        id: user[0],
+        name: user[1],
+        userName: user[2],
+      }))
+      .map(user => {
+        if(!userHighRelevanceData.includes(user.id)) return user;
+        return {
+          ...user,
+          priority: 10,
+        }
+      })
+      .map(user => {
+        if(!userLessRelevanceData.includes(user.id)) return { ...user, priority: 0 };
+        return {
+          ...user,
+          priority: 5,
+        }
+      })
+
+    await userCollection.insertMany(users, { autoIndexId: false });
+  }
   return;
 }
 
