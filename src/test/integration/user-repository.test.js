@@ -1,5 +1,4 @@
 const { connect, disconnect, getCollection } = require('../../database/helper');
-const loadData = require('../../../load-data')
 const userRepository = require('../../repositories/user-repository');
 
 describe('User Repository', () => {
