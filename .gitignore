@@ -6,3 +6,6 @@ node_modules
 
 #COVERAGE
 coverage
+
+#JEST MONGO DB CONFIG
+globalConfig.json

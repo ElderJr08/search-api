@@ -6,6 +6,8 @@
   "scripts": {
     "test": "jest --passWithNoTests --silent --noStackTrace --runInBand --no-cache",
     "test:coverage": "npm test -- --coverage",
+    "test:unit": "npm test -- --watch -c jest-unit-config.js",
+    "test:integration": "npm test -- --watch -c jest-integration-config.js",
     "start": "node src/main/index.js",
     "lint:fix": "eslint --fix *.js ."
   },
@@ -20,6 +22,7 @@
   "devDependencies": {
     "@babel/core": "^7.14.6",
     "@babel/eslint-parser": "^7.14.7",
+    "@shelf/jest-mongodb": "^1.2.5",
     "eslint": "^7.29.0",
     "jest": "^27.0.6"
   }
