@@ -18,6 +18,11 @@ const connect = async(uri) => {
   }
 }
 
+const disconnect = async () => {
+  await client.close();
+  client = null;
+}
+
 const getCollection = async (name) => {
   if (!client?.isConnected()) {
     await connect(configUri)
@@ -27,5 +32,6 @@ const getCollection = async (name) => {
 
 module.exports = {
   connect,
+  disconnect,
   getCollection,
 }
