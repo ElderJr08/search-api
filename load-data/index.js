@@ -1,6 +1,12 @@
 const fs = require('fs');
 const path = require('path');
 
+const priorities = {
+  HIGH: 3,
+  MEDIUM: 2,
+  LOW: 1,
+}
+
 const { getCollection } = require('../src/database/helper');
 
 const prepareData = (fileName) => {
@@ -32,14 +38,14 @@ const loadData = async(config) => {
         if(!userHighRelevanceData.includes(user.id)) return user;
         return {
           ...user,
-          priority: 10,
+          priority: priorities.HIGH,
         }
       })
       .map(user => {
-        if(!userLessRelevanceData.includes(user.id)) return { ...user, priority: 0 };
+        if(!userLessRelevanceData.includes(user.id)) return { ...user, priority: priorities.LOW };
         return {
           ...user,
-          priority: 5,
+          priority: priorities.MEDIUM,
         }
       })
 
