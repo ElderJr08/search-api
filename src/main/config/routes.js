@@ -3,7 +3,7 @@ const routes = require('../routes');
 
 module.exports = app => {
   const router = express.Router()
-  app.use('/api/v1', router);
+  app.use('/', router);
   routes(router)
 };
 
