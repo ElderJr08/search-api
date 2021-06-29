@@ -17,7 +17,7 @@ const searchController = (
 
     const pageResponse = {
       from,
-      size, 
+      size: users.length, 
       data: users, 
     }
 
