@@ -6,7 +6,7 @@ module.exports = {
     const contains = RegExp(query.term, 'i');
 
     const options = {
-      projection: { _id: 0 },
+      projection: { _id: 0, priority: 0 },
     }
 
     const filter = {
