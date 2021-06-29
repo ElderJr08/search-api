@@ -37,13 +37,12 @@ LESS_RELEVANCE_FILE_NAME=lista_relevancia_2.txt
 Obtém todos os usuários em um formato .json que combinam com o termo pesquisado, de acordo com a regra de relevância das listas informada anteriormente.
 
 ### Exemplo
-| ID                                   | Nome              | Username             |
-|--------------------------------------|-------------------|----------------------|
-| 065d8403-8a8f-484d-b602-9138ff7dedcf | Wadson marcia     | wadson.marcia        |
-| 5761be9e-3e27-4be8-87bc-5455db08408  | Kylton Saura      | kylton.saura         |
-| ef735189-105d-4784-8e2d-c8abb07e72d3 | Edmundo Cassemiro | edmundo.cassemiro    |
-| aaa40f4e-da26-42ee-b707-cb81e00610d5 | Raimundira M      | raimundiram          |
-| 51ba0961-8d5b-47be-bcb4-54633a567a99 | Pricila Kilder    | pricilakilderitaliani|
+
+| Parâmetro  | Descrição                   |
+|------------|-----------------------------|
+| query      | Termo procurado.                                                                                           |
+| from       | Posição da página. 0 é a primeira, 1 é a segunda e assim por diante.  Caso não informado, o valor default será 0.|
+| size       | Quantidade de itens a ser retornado.  Caso não informado, o valor default será 15.  
 
 
 ## Exemplo de uso
