@@ -24,7 +24,7 @@ HIGH_RELEVANCE_FILE_NAME=lista_relevancia_1.txt
 LESS_RELEVANCE_FILE_NAME=lista_relevancia_2.txt
 ```
 
-# Iniciando via Docker
+# Iniciando a aplicação via Docker
 
 1. Clone o repositório - `git@github.com:ElderJr08/challenge-solution.git`.
 2. Rodar comando docker-compose - `docker-compose up`.
